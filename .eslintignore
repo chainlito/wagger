@@ -1,0 +1,23 @@
+# Wagerr binaries
+bin
+
+# Dependency directory
+# https://www.npmjs.org/doc/misc/npm-faq.html#should-i-check-my-node_modules-folder-into-git
+node_modules
+
+# OSX
+.DS_Store
+
+# ESLint
+.eslintcache
+
+# App packaged
+dist
+release
+
+build/*
+!build/icons
+thumbs.db
+!.gitkeep
+.idea
+npm-debug.log.*

@@ -1,0 +1,48 @@
+<template>
+  <div id="betting" class="content">
+    <div class="row">
+      <div class="betting-sidebar">
+        <div class="betting-sidebar-container">
+          <side-nav-bar @needsScroll="scrollToTop"></side-nav-bar>
+        </div>
+      </div>
+
+      <div class="betting-main">
+        <div class="col s12 betting-content">
+          <transition name="fade" mode="out-in">
+            <div id="peerless" class="row">
+              <div class="col s1 m9">
+                <event-list></event-list>
+              </div>
+
+              <div class="col s1 m3 bet-slip-div">
+                <bet-slip></bet-slip>
+              </div>
+            </div>
+          </transition>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+import bettingNav from '@/components/betting/bettingNav';
+import SideNavBar from '@/components/SideNavBar';
+import BetSlip from '@/components/betting/components/BetSlip';
+import EventList from '@/components/betting/components/EventList';
+import { mapGetters } from 'vuex';
+
+export default {
+  name: 'Betting',
+  components: { SideNavBar, bettingNav, EventList, BetSlip },
+  computed: {
+    ...mapGetters(['getOddsFormats', 'getOddsFormat'])
+  },
+  methods: {
+    scrollToTop: function() {
+      window.scrollTo(0,0);
+    }
+  }
+};
+</script>

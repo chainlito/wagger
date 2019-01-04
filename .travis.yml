@@ -1,0 +1,55 @@
+language: node_js
+node_js: 12
+
+env:
+  global:
+    - ELECTRON_CACHE=$HOME/.cache/electron
+    - ELECTRON_BUILDER_CACHE=$HOME/.cache/electron-builder
+
+before_cache:
+  - rm -rf $HOME/.cache/electron-builder/wine
+
+cache:
+  directories:
+    - node_modules
+    - $(npm config get prefix)/lib/node_modules
+    - $HOME/.cache/electron
+    - $HOME/.cache/electron-builder
+
+stages:
+  - lint
+  - test
+
+install:
+  - npm install
+
+script:
+  # Ideally we run `npm run package` here instead, but need to handle the
+  # complication of fetching the Wagerr binaries to place in the `bin` dir.
+  # Adding some `before_script` commands to each job to fetch the files from
+  # the latest GitHub release might be the solution.
+  - npm run build
+
+jobs:
+  include:
+    - stage: lint
+      name: 'Lint Check'
+      script:
+        # Lint tests turned off until we can clear out all the current errors.
+        # If you would like to help out, run the below commands and you will
+        # see a list of errors that need to be fixed.
+        # - npm run lint
+        # - npm run lint-styles
+        - echo "Lint tests turned off until all current errors are resolved."
+
+    - stage: test
+      name: 'Linux Test'
+      os: linux
+
+    - stage: test
+      name: 'macOS Test'
+      os: osx
+
+    - stage: test
+      name: 'Windows Test'
+      os: windows

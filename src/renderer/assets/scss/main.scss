@@ -1,0 +1,1823 @@
+// Configuration
+@import 'variables';
+@import 'utilities';
+
+// Fonts & Icons
+@import 'fonts';
+@import '../css/icons';
+@import 'perfect_scrollbar';
+@import 'element-ui';
+
+body {
+  margin: 0;
+  font-family: 'Open Sans', 'Arial', sans-serif;
+  &.lightbox {
+    .wrapper .nav {
+      height: 0;
+      header {
+        opacity: 0.1;
+      }
+    }
+  }
+}
+
+#app {
+  height: 100vh;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition-duration: 0.3s;
+  transition-property: opacity;
+  transition-timing-function: ease;
+}
+
+.fade-enter,
+.fade-leave-active {
+  opacity: 0;
+}
+
+.wrapper {
+  background-color: $gray-300;
+  .nav {
+    height: 90px;
+  }
+}
+.content {
+  padding: 20px 10px;
+  min-height: calc(100vh - 90px);
+  margin-bottom: 0;
+}
+
+.but {
+  color: $white;
+  display: block;
+  background: $wagerr-red;
+  text-align: center;
+  line-height: 24px;
+  font-size: 18px;
+  line-height: 24px;
+  padding: 8px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: 'Montserrat';
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  &:hover,
+  &:focus {
+    background: $wagerr-red-dark;
+  }
+}
+.btn {
+  color: $white;
+  background: $wagerr-red;
+  font-family: 'Montserrat';
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: none;
+  &:hover,
+  &:focus,
+  &.active {
+    background: $wagerr-red-dark;
+    box-shadow: inherit;
+  }
+}
+.btn-medium {
+  color: $white;
+  background: $wagerr-red;
+  font-family: 'Montserrat';
+  font-weight: 700;
+  letter-spacing: 1px;
+  transition: none;
+  &:hover,
+  &:focus {
+    background: $wagerr-red-dark !important;
+    box-shadow: inherit;
+  }
+}
+.btn-large {
+  color: $white;
+  background: $wagerr-red;
+  font-family: 'Montserrat';
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: none;
+  &:hover,
+  &:focus,
+  &.active {
+    background: $wagerr-red-dark !important;
+    box-shadow: inherit;
+  }
+}
+
+h4 {
+  font-weight: 700;
+  font-family: 'Montserrat';
+  font-size: 28px;
+  color: $gray-900;
+  margin-bottom: 25px;
+  line-height: 30px;
+  & + p {
+    margin-top: -10px;
+    font-size: 14px;
+    line-height: 20px;
+    margin-bottom: 20px;
+  }
+}
+table.z-depth-2,
+.no-transactions {
+  box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* Header */
+
+header {
+  color: #fff;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  height: 90px;
+  background-image: url(../images/bg-header.png);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: $wagerr-red;
+
+  .wagerr-logo {
+    height: 50px;
+    background-image: url(../images/logo-header.svg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    float: left;
+    margin: 20px 0 0 0;
+    width: 200px;
+    filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.3));
+  }
+
+  .wagerr-balance {
+    margin: 17px 25px 0 0;
+
+    #wagerr-total-balance {
+      background-color: $bg-gradient-black-half;
+      display: inline-block;
+      padding: 10px 15px;
+      font-weight: 600;
+      color: $white;
+      font-size: 16px;
+      letter-spacing: 0.3px;
+      h6 {
+        color: $wagerr-red;
+        font-size: 11px;
+        text-align: center;
+        letter-spacing: 0.3px;
+        margin-top: 2px;
+        margin-bottom: 0;
+        font-weight: 600;
+      }
+    }
+    i {
+      margin-left: 10px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+
+    li {
+      display: block;
+      float: left;
+      list-style: none;
+      font-size: 28px;
+      padding: 0;
+      cursor: pointer;
+      text-align: center;
+      height: 90px;
+      position: relative;
+      width: 110px;
+      &:hover {
+        background-color: $bg-gradient-black-quarter;
+        i {
+          filter: drop-shadow(0 1px 4px rgba(0, 0, 0, 0.3));
+        }
+        h6 {
+          text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+        }
+      }
+      &.router-link-active {
+        background-color: $bg-gradient-black-half;
+      }
+      i {
+        cursor: pointer;
+        font-size: 0;
+        margin: 20px 0 0;
+        width: 100%;
+        height: 30px;
+        display: block;
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: contain;
+        &.navico-wallet {
+          background-image: url(../images/navico-wallet.svg);
+          height: 31px;
+          margin-top: 22px;
+        }
+        &.navico-history {
+          background-image: url(../images/navico-history.svg);
+          height: 32px;
+          margin-top: 21px;
+        }
+        &.navico-betting {
+          background-image: url(../images/navico-betting.svg);
+          height: 27px;
+          margin-top: 23px;
+        }
+        &.navico-dice {
+          background-image: url(../images/navico-dice.svg);
+          height: 24px;
+          margin-top: 25px;
+        }
+        &.navico-wrench {
+          background-image: url(../images/navico-wrench.svg);
+          height: 28px;
+          margin-top: 22px;
+        }
+        &.navico-gear {
+          background-image: url(../images/navico-gear.svg);
+          height: 26px;
+          margin-top: 24px;
+        }
+      }
+      h6 {
+        font-size: 12px;
+        margin: 0;
+        position: absolute;
+        top: 58px;
+        display: block;
+        text-align: center;
+        width: 100%;
+        letter-spacing: 0.5px;
+      }
+      .title {
+        display: block;
+        text-align: center;
+        text-transform: uppercase;
+        color: #fff;
+        font-size: 12px;
+        padding-top: 5px;
+      }
+      .dropdown-content {
+        position: absolute;
+        top: 90px !important;
+        left: 0 !important;
+        width: max-content !important;
+        height: auto !important;
+        li {
+          display: block;
+          float: left;
+          list-style: none;
+          font-size: 28px;
+          padding: 15px 20px 10px 20px;
+          cursor: pointer;
+          min-height: auto;
+          height: auto;
+          a {
+            text-align: left;
+            font-size: 13px;
+            padding: 8px 16px;
+            &:hover {
+              background-color: $bg-gradient-black-half;
+            }
+            i {
+              margin: 0 8px 0 0 !important;
+              color: $wagerr-red;
+              font-weight: 600;
+            }
+          }
+        }
+      }
+      .dropdown-trigger {
+        margin-top: 0;
+        width: 100%;
+        height: 100%;
+        padding: 0;
+        position: absolute;
+      }
+
+      #settings-dropdown li {
+        padding: 0;
+      }
+    }
+  }
+}
+
+#betting {
+  .betting-sidebar-container {
+    font-size: 0;
+    background-image: url(../images/bg-vector-black-d50.png);
+    background-position: left bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 200px;
+    height: calc(100% - 90px);
+    position: fixed;
+    box-sizing: border-box;
+    margin: -20px 0 0 -10px;
+
+    .betting-types {
+      padding-top: 20px;
+      ul {
+        width: calc(100% - 27px);
+        margin-left: 27px;
+        li {
+          border-top: none;
+          border-left: 3px solid transparent;
+          padding: 0;
+          margin: 0;
+          display: block;
+          width: 100%;
+          a {
+            font-size: 14px;
+            font-weight: 600;
+            padding: 4px 0 4px 20px;
+            color: $white;
+            text-transform: none;
+            display: block;
+            &:hover {
+              background-color: $wagerr-red;
+            }
+          }
+          &.router-link-active {
+            a {
+              background-color: $wagerr-red;
+            }
+          }
+        }
+      }
+    }
+  }
+  .betting-main {
+    margin-left: 200px;
+    position: relative;
+
+    .betting-nav {
+      background: $white;
+      margin: -10px -10px 0 -10px;
+      width: calc(100% + 20px);
+    }
+  }
+}
+
+#events {
+  h4 {
+    font-weight: 700;
+    font-family: 'Montserrat';
+    font-size: 28px;
+    color: $gray-900;
+    margin-bottom: 25px;
+    line-height: 30px;
+  }
+  .events-list {
+    margin-top: 10px;
+    .card {
+      border: none;
+      border-radius: 4px;
+      box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.2);
+      margin-bottom: 15px;
+      overflow: hidden;
+      .event-tournament {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: $wagerr-red;
+        color: $white;
+        border: none;
+        font-family: 'Montserrat';
+        font-weight: 700;
+        padding: 10px 0 8px;
+        font-size: 14px;
+        line-height: 20px;
+        .sport {
+          padding-left: 10px;
+          padding-right: 10px;
+          flex-grow: 1;
+        }
+        .date {
+          padding-left: 10px;
+          padding-right: 10px;
+          flex-shrink: 0;
+        }
+      }
+      .event-details {
+        > div:first-child {
+          background-color: $wagerr-red-dark;
+          height: 28px;
+        }
+        .event-headers {
+          background-color: $wagerr-red-dark;
+          margin: 0;
+          padding: 0;
+          .event-header {
+            background-color: transparent;
+            background-color: $wagerr-red-dark;
+            font-family: 'Montserrat';
+            font-size: 11px;
+            line-height: 20px;
+            padding: 4px 0;
+            font-weight: 600;
+            height: 28px;
+            margin-bottom: 0;
+            div {
+              background-color: transparent;
+            }
+          }
+        }
+      }
+      .event-pair {
+        margin: 0;
+        .event-teams {
+          margin: 10px 0;
+          .teams {
+            height: 50px;
+            margin: 0;
+            display: table-row;
+            width: 100%;
+            .team-name {
+              font-size: 16px;
+              line-height: 20px;
+              font-weight: 700;
+              color: $gray-900;
+              height: 50px;
+              margin: 0;
+              display: table-cell;
+              vertical-align: middle;
+              width: 100%;
+              line-height: 18px;
+            }
+          }
+        }
+        .event-odds {
+          margin: 10px 0;
+          padding: 0;
+          .event-odds-row {
+            margin: 0;
+          }
+          .event-odd {
+            margin: 0;
+          }
+        }
+        .odds {
+          margin: 0;
+          .odd {
+            height: 50px;
+            margin: 0;
+            display: inline-block;
+            vertical-align: middle;
+            width: 100%;
+          }
+          .ml {
+            height: 50px;
+            margin: 0;
+            display: inline-block;
+            vertical-align: middle;
+            width: 100%;
+          }
+          .spread {
+            height: 50px;
+            margin: 0;
+            display: inline-block;
+            vertical-align: middle;
+            width: 100%;
+          }
+          .total {
+            height: 50px;
+            margin: 0;
+            display: inline-block;
+            vertical-align: middle;
+            width: 100%;
+          }
+          > div {
+            button {
+              margin-top: 5px;
+              height: 40px;
+              border: 4px;
+              background-color: #e9e9e9;
+              position: relative;
+              box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.1),
+                inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+              border: 1px solid #bebebe;
+              color: #555;
+              font-weight: 800;
+              font-family: 'Open Sans';
+              font-size: 14px;
+              letter-spacing: 0.5px;
+              &:hover {
+                color: $white;
+                border: 1px solid $wagerr-red-dark;
+                background: $wagerr-red-light;
+                box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2),
+                  inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+                &::before {
+                  opacity: 0.3;
+                }
+                &::after {
+                  opacity: 0.3;
+                }
+              }
+              &:active {
+                background: $wagerr-red-dark;
+              }
+              &::before {
+                content: '';
+                background-image: url(../images/bumps.svg);
+                background-position: center center;
+                background-repeat: no-repeat;
+                width: 0;
+                height: 26px;
+                position: absolute;
+                left: 3px;
+                top: 7px;
+                opacity: 0.1;
+              }
+              &::after {
+                content: '';
+                background-image: url(../images/bumps.svg);
+                background-position: center center;
+                background-repeat: no-repeat;
+                width: 0;
+                height: 26px;
+                position: absolute;
+                right: 3px;
+                top: 7px;
+                opacity: 0.1;
+              }
+              &[disabled='disabled'] {
+                box-shadow: none;
+                background-color: #f3f3f3 !important;
+                border: none;
+                &::before {
+                  opacity: 0;
+                }
+                &::after {
+                  opacity: 0;
+                }
+              }
+              .totalnum {
+                display: inline-block;
+                font-weight: 700;
+              }
+              .totalodds {
+                display: inline-block;
+                font-weight: 800;
+                padding-left: 2px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+#wallet {
+  .wallet-container {
+    .wallet-left {
+      position: -webkit-sticky;
+      position: sticky;
+      top: 110px;
+      .wallet-balance {
+        width: 100%;
+        color: $wagerr-red;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 0;
+        border-radius: 4px;
+        padding: 40px;
+        background-image: url(../images/bg-vector-black-d40.png);
+        background-position: center bottom;
+        background-repeat: no-repeat;
+        background-size: cover;
+
+        h1 {
+          margin-top: 0;
+          margin-bottom: 10px;
+          font-family: 'Montserrat';
+          font-weight: 700;
+          font-size: 24px;
+          color: $wagerr-red;
+          letter-spacing: 2px;
+          text-align: center;
+          text-transform: uppercase;
+          span {
+            display: block;
+            width: 60%;
+            margin: 0 auto 10px;
+            height: 70px;
+            background-image: url(../images/wgrWordsWhite.svg);
+            background-position: center bottom;
+            background-repeat: no-repeat;
+            background-size: contain;
+          }
+        }
+        .dashboard-balance {
+          padding-top: 30px;
+          padding-bottom: 10px;
+          div {
+            color: $gray-300;
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 18px;
+            letter-spacing: 1px;
+            padding-bottom: 10px;
+          }
+          .total-balance {
+            font-size: 26px;
+            font-weight: 700;
+            color: $white;
+            padding: 25px 20px;
+            width: 100%;
+            display: block;
+            border-radius: 4px;
+            background: #111;
+            margin-bottom: 30px;
+            line-height: 36px;
+            letter-spacing: 0.5px;
+            h6 {
+              color: $wagerr-red;
+              font-size: 11px;
+              text-align: center;
+              letter-spacing: 0.3px;
+              margin-top: 2px;
+              margin-bottom: 0;
+              font-weight: 600;
+            }
+            @media screen and (max-width: 1450px) {
+              font-size: 22px;
+              font-weight: 600;
+              padding: 15px 10px;
+              letter-spacing: 0.25px;
+            }
+          }
+        }
+      }
+      .wallet-btns {
+        margin-top: 30px;
+        margin-bottom: 20px;
+        a {
+          margin: 0 0 0 10px;
+          width: 42%;
+          padding-left: 0;
+          padding-right: 0;
+          &:first-child {
+            margin: 0;
+          }
+        }
+      }
+    }
+    .wallet-right {
+      .wagerr-transactions {
+        width: 100%;
+        table {
+          th {
+          }
+        }
+      }
+    }
+  }
+}
+
+.main-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 4px;
+  table-layout: auto;
+  overflow: hidden;
+  thead {
+    background: $wagerr-red;
+    border-radius: 0;
+    tr {
+      border-radius: 0;
+      th {
+        color: $white;
+        text-align: left;
+        font-family: 'Open Sans';
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 18px;
+        padding: 8px;
+        vertical-align: top;
+        border-radius: 0;
+        @media screen and (max-width: 1280px) {
+          span {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+  tbody {
+    tr {
+      &:nth-child(odd) {
+        background-color: #eee;
+      }
+      td {
+        color: $gray-900;
+        text-align: left;
+        font-family: 'Open Sans';
+        font-weight: 600;
+        font-size: 12px;
+        line-height: 18px;
+        padding: 8px !important;
+        vertical-align: top;
+        &.confirmations {
+          text-align: center;
+        }
+        .transaction-list-link {
+          display: inline-block;
+          padding: 5px;
+        }
+      }
+    }
+  }
+}
+
+.no-transactions {
+  width: 100%;
+  background: $white;
+  border-radius: 4px;
+  text-align: center;
+  display: block;
+  padding: 20px 0;
+  border-top: 34px solid $wagerr-red;
+  margin-top: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  p {
+    a {
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+#bet_history {
+  h4 {
+    font-weight: 700;
+    font-family: 'Montserrat';
+    font-size: 28px;
+    color: $gray-900;
+    margin-bottom: 25px;
+    line-height: 30px;
+  }
+}
+
+.splash {
+  padding-top: 3%;
+  margin: auto;
+  width: 50%;
+  color: white;
+  .splash-image {
+    background-image: url(../images/wgrsecondaryWhite.svg);
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 100%;
+    height: 280px;
+    margin-bottom: 0;
+  }
+  .version {
+    font-size: 16px;
+    font-weight: 600;
+    color: #666;
+    text-align: center;
+    letter-spacing: 2px;
+    margin-bottom: 4%;
+  }
+  .splash-loading-container {
+    margin-top: 30px;
+  }
+
+  .slider {
+    width: 100%;
+    height: 4px;
+    margin-top: -30px;
+  }
+
+  .line {
+    position: absolute;
+    background: $wagerr-red;
+    width: 100%;
+    height: 4px;
+  }
+
+  .break {
+    position: absolute;
+    background: #222;
+    width: 6px;
+    height: 4px;
+  }
+
+  .dot1 {
+    -webkit-animation: loading 4s infinite;
+    animation: loading 4s infinite;
+  }
+  .dot2 {
+    -webkit-animation: loading 4s 0.5s infinite;
+    animation: loading 4s 0.5s infinite;
+  }
+  .dot3 {
+    -webkit-animation: loading 4s 1s infinite;
+    animation: loading 4s 1s infinite;
+  }
+
+  @-webkit-keyframes loading {
+    from {
+      left: 0;
+    }
+    to {
+      left: 100%;
+    }
+  }
+
+  @keyframes loading {
+    from {
+      left: 0;
+    }
+    to {
+      left: 100%;
+    }
+  }
+
+  .splash-wallet-repair {
+    margin-top: 20px;
+    div {
+      a {
+        color: $wagerr-red;
+        font-weight: bold;
+        font-size: 18px;
+        line-height: 32px;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
+
+#chain-games {
+  padding: 20px 10px 0 10px;
+  .chain-container {
+    padding-top: 0;
+    .cg-lotto-info {
+      width: 100%;
+      color: $wagerr-red;
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 40px;
+      border-radius: 4px;
+      padding: 40px 40px 25px;
+      background-image: url(../images/bg-vector-black-d40-horz.png);
+      background-position: center bottom;
+      background-repeat: no-repeat;
+      background-size: cover;
+      position: relative;
+      .chain-info {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        margin: 0;
+        font-size: 24px;
+        color: $wagerr-red;
+        cursor: pointer;
+        font-weight: 500;
+      }
+      h2 {
+        margin-top: 0;
+        margin-bottom: 40px;
+        font-family: 'Montserrat';
+        font-weight: 700;
+        font-size: 20px;
+        color: $wagerr-red;
+        letter-spacing: 2px;
+        text-align: center;
+        text-transform: uppercase;
+        span {
+          display: block;
+          width: 70%;
+          margin: 0 auto 10px;
+          height: 80px;
+          background-image: url(../images/wgrWordsWhite.svg);
+          background-position: center bottom;
+          background-repeat: no-repeat;
+          background-size: contain;
+        }
+      }
+      .cg-dates {
+        font-weight: 600;
+        font-size: 14px;
+        color: $white;
+        padding: 0;
+        letter-spacing: 1px;
+        h6 {
+          font-size: 14px;
+          color: $gray-600;
+          letter-spacing: 1px;
+          font-weight: 600;
+        }
+      }
+
+      .cg-jackpot {
+        font-size: 45px;
+        font-weight: 700;
+        font-family: 'Montserrat';
+        color: white;
+        letter-spacing: 1px;
+        text-align: center;
+        h3 {
+          color: $wagerr-red;
+          font-weight: 700;
+          font-size: 15px;
+          margin: 0;
+        }
+        .currency {
+          font-size: 18px;
+          display: inline-block;
+        }
+      }
+      .all-stats {
+        padding: 20px 10px;
+        width: 100%;
+        display: block;
+        border-radius: 4px;
+        background: #111;
+        margin: 20px 0;
+        overflow: hidden;
+        .stats {
+          min-height: 86px;
+          h6 {
+            font-family: 'Montserrat';
+            font-weight: 700;
+            font-size: 14px;
+            color: $wagerr-red;
+            margin-top: 5px;
+            margin-bottom: 10px;
+          }
+          .cg-info {
+            color: $white;
+            font-size: 28px;
+            font-weight: 600;
+            line-height: 28px;
+            .currency {
+              font-size: 13px;
+              display: block;
+              color: $gray-600;
+            }
+          }
+          &:not(:last-child) {
+            border-right: 2px solid #222;
+          }
+        }
+        &.bottom-row {
+          .stats {
+            padding-bottom: 5px;
+          }
+        }
+      }
+    }
+    .chain-btns {
+      margin-top: 40px;
+      margin-bottom: 0;
+      a {
+        margin: 0 0 0 10px;
+        width: 42%;
+        padding-left: 0;
+        padding-right: 0;
+        &:first-child {
+          margin: 0;
+        }
+      }
+    }
+  }
+}
+
+#tools {
+  .tools-sidebar-container {
+    padding-top: 0;
+    font-size: 0;
+    background-image: url(../images/bg-vector-black-d50.png);
+    background-position: left bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 200px;
+    height: calc(100% - 90px);
+    position: fixed;
+    box-sizing: border-box;
+    margin: -20px 0 0 -10px;
+    .sidebar-branding {
+      background-image: url(../images/logo-sidenav-footer.svg);
+      background-position: center bottom;
+      background-repeat: no-repeat;
+      background-size: contain;
+      width: 80%;
+      margin: 0 10%;
+      height: 100px;
+      position: absolute;
+      bottom: 10px;
+    }
+    nav {
+      width: 200px;
+      background: transparent;
+      position: relative;
+      top: auto;
+      left: auto;
+      height: auto;
+      padding-top: 0;
+      box-shadow: none;
+    }
+    .tools-types {
+      padding-top: 20px;
+      ul {
+        width: calc(100% - 27px);
+        margin-left: 27px;
+        li {
+          border-top: none;
+          border-left: 3px solid transparent;
+          padding: 0;
+          margin: 0;
+          display: block;
+          width: 100%;
+          a {
+            font-size: 14px;
+            font-weight: 600;
+            padding: 4px 0 4px 20px;
+            color: $white;
+            text-transform: none;
+            display: block;
+            &:hover {
+              background-color: $wagerr-red;
+            }
+          }
+          &.router-link-active {
+            a {
+              background-color: $wagerr-red;
+            }
+          }
+        }
+      }
+    }
+    h5 {
+      font-size: 11px;
+      font-weight: 700;
+      color: $wagerr-red-light;
+      text-transform: uppercase;
+      padding-left: 50px;
+      letter-spacing: 1px;
+    }
+  }
+  .tools-main {
+    margin-left: 200px;
+    position: relative;
+
+    .tools-nav {
+      background: $white;
+      margin: -10px -10px 0 -10px;
+      width: calc(100% + 20px);
+    }
+  }
+}
+
+#information {
+  .info-block {
+    table {
+      thead {
+        th {
+          text-align: center;
+          font-size: 18px;
+        }
+      }
+      tbody {
+        th {
+          padding: 10px 15px;
+          font-size: 15px;
+          line-height: 20px;
+          vertical-align: top;
+          white-space: nowrap;
+        }
+        td {
+          padding: 10px 15px !important;
+          font-size: 14px;
+          line-height: 20px;
+          text-align: right;
+          vertical-align: top;
+        }
+        .datadir {
+          font-size: 12px;
+          line-height: 15px;
+        }
+      }
+    }
+  }
+
+  .fa-check-circle {
+    color: $success;
+    font-size: 20px;
+    margin-top: -10px;
+    top: 2px;
+    position: relative;
+  }
+  .fa-times-circle {
+    color: $wagerr-red-dark;
+    font-size: 20px;
+    margin-top: -10px;
+    top: 2px;
+    position: relative;
+  }
+}
+
+#wallet-repair {
+  button {
+    width: 250px;
+  }
+
+  li {
+    font-size: 14px;
+    display: flex;
+    margin-bottom: 2px;
+    .command {
+      width: 140px;
+      display: inline-block;
+      margin-right: 20px;
+      margin-left: 20px;
+      vertical-align: middle;
+    }
+    .desc {
+      display: inline-block;
+    }
+  }
+}
+
+.modal-overlay {
+  background: $white;
+  opacity: 0.8 !important;
+}
+.modal {
+  overflow-y: inherit;
+  padding: 20px;
+  border: 5px solid #000;
+  background: transparent;
+  background-image: url(../images/bg-vector-black-d50.png);
+  background-position: left bottom;
+  background-repeat: no-repeat;
+  background-size: cover;
+  &.modal-info {
+    h4 {
+      color: $wagerr-red;
+      text-align: center;
+      padding: 20px 0 10px;
+      margin: 0;
+    }
+    .modal-footer {
+      text-align: center;
+    }
+  }
+  .modal-content {
+    padding: 0;
+    padding-left: 20px;
+    padding-right: 20px;
+    .input-field > label:not(.label-icon).active {
+      transform: translateY(-22px) scale(0.8);
+    }
+    .input-field {
+      .prefix {
+        top: 2px;
+        font-size: 24px !important;
+      }
+      input {
+        background: rgba(0, 0, 0, 0.4);
+        padding: 0 15px;
+        height: 44px;
+        box-sizing: border-box;
+      }
+      span {
+        margin-left: 45px;
+      }
+      label {
+        font-weight: 600;
+        padding-left: 15px;
+      }
+    }
+    .amount-margin {
+      margin-left: 45px;
+    }
+    .modal-text {
+      padding-bottom: 20px;
+      .modal-font {
+        font-size: 16px;
+        line-height: 22px;
+        font-weight: 700px;
+        font-family: 'Montserrat';
+      }
+    }
+    .barcode {
+      width: 170px;
+      padding: 10px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .address-label {
+      color: $wagerr-red;
+      font-size: 18px;
+      line-height: 24px;
+      font-weight: 700px;
+      font-family: 'Montserrat';
+      margin-top: -5px;
+    }
+
+    .address {
+      color: $white;
+      padding: 20px;
+      background: #111;
+      font-size: 24px;
+    }
+
+    .options {
+      width: 100%;
+      height: auto;
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 20px;
+      text-align: center;
+      button {
+        background-color: $wagerr-red;
+        &::active {
+          width: 150px;
+        }
+      }
+    }
+  }
+}
+
+.cost {
+  color: $gray-600;
+  display: block;
+  font-size: 12px;
+  font-style: italic;
+  letter-spacing: 1px;
+  padding-top: 8px;
+}
+
+body.lightbox #app .command .el-input input.el-input__inner {
+  height: 40px !important;
+  color: $gray-900;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.transaction-link {
+  color: $gray-900;
+  cursor: pointer;
+}
+
+.transaction-link:hover {
+  color: $wagerr-red-dark;
+  cursor: pointer;
+}
+
+.bet-stake {
+  color: white;
+}
+
+.bet-details {
+  padding: 2%;
+}
+
+.bet-slip-options button {
+  background-color: $wagerr-red;
+}
+
+.bet-returns span {
+  font-size: 0.9em;
+  color: white;
+}
+
+.selection {
+  margin-top: 5px;
+  font-size: 1em;
+  color: white;
+}
+
+.clear-bet .icon-delete {
+  font-weight: bold;
+  color: $wagerr-red;
+  font-size: 20px;
+}
+
+.clear-bet > .icon-delete:hover {
+  color: white;
+  cursor: pointer;
+}
+
+.second-nav li {
+  list-style: none;
+  display: block;
+}
+
+.second-nav ul li button {
+  background-color: $wagerr-red;
+  border: none;
+  color: white;
+  font-weight: normal;
+  text-transform: uppercase;
+  cursor: pointer;
+  width: 100%;
+  height: 50px;
+  font-size: 18px;
+}
+
+.router-link {
+  color: $wagerr-red-dark;
+}
+
+.btn:active {
+  background-color: $gray-900;
+}
+
+.second-nav ul li button:hover {
+  background-color: $wagerr-red-dark;
+}
+
+.second-nav ul li button:active {
+  background-color: $gray-900;
+}
+
+.second-nav ul li button:visited {
+  background-color: $gray-900;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition-duration: 0.3s;
+  transition-property: opacity;
+  transition-timing-function: ease;
+}
+
+.inset-top {
+  width: 65%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.inset-top div {
+  background-color: #1d1d1e;
+  height: 18px;
+  -moz-border-radius: 10px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+.shadow {
+  -moz-box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.12);
+  -webkit-box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.12);
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.12);
+}
+
+.bg-gradient {
+  background: -webkit-linear-gradient(
+    to left bottom,
+    #2b2c2d,
+    #191919
+  ); /* For Safari 5.1 to 6.0 */
+
+  background: -o-linear-gradient(
+    to left bottom,
+    #2b2c2d,
+    #191919
+  ); /* For Opera 11.1 to 12.0 */
+
+  background: -moz-linear-gradient(
+    to left bottom,
+    #2b2c2d,
+    #191919
+  ); /* For Firefox 3.6 to 15 */
+
+  background: linear-gradient(
+    to left bottom,
+    #2b2c2d,
+    #191919
+  ); /* Standard syntax */
+}
+
+.inner-circle {
+  display: inline-block; /* add this */
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  border-style: solid;
+  border-width: 0;
+  border-color: $wagerr-red-dark;
+  background-color: $wagerr-red-dark;
+  color: $white;
+  &:hover {
+    border-color: $white;
+    background-color: $wagerr-red;
+  }
+  i.far {
+    color: $white;
+    font-size: 1.2em;
+    border-radius: 60px;
+    padding: 17px;
+    margin-top: -2px;
+  }
+}
+
+.circle-icon {
+  display: inline-block;
+  margin: 18px;
+  width: 63px;
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+  }
+}
+.circle-icon-link {
+  font-size: 1.5em;
+  color: $wagerr-red;
+  i.far {
+    font-size: 1.2em;
+    border-radius: 60px;
+    padding: 17px;
+    margin-top: 0;
+    color: $white;
+    &:hover {
+      color: $white;
+    }
+  }
+  i.fas {
+    font-size: 1.2em;
+    border-radius: 60px;
+    padding: 17px;
+    color: $white;
+    &:hover {
+      color: $white;
+    }
+  }
+}
+
+.fade-enter,
+.fade-leave-active {
+  opacity: 0;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.pull-right {
+  float: right;
+}
+
+.pull-left {
+  float: left;
+}
+
+.clear {
+  clear: both;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition-duration: 0.3s;
+  transition-property: opacity;
+  transition-timing-function: ease;
+}
+
+.fade-enter,
+.fade-leave-active {
+  opacity: 0;
+}
+
+.side-nav li {
+  width: 100%;
+}
+
+.side-nav li div i {
+  padding-top: 16px;
+  font-size: 23px;
+}
+
+.side-nav li .parent a {
+  padding: 0;
+}
+
+.modal-open {
+  overflow-y: auto;
+}
+
+.modal-header h4 {
+  color: $wagerr-red;
+}
+
+.team-font {
+  font-size: 1.2em;
+  color: $gray-900;
+}
+
+// Styling the error toast popups
+.toast-error {
+  color: $wagerr-red;
+  background-color: #f2dede;
+  border-color: #ebccd1;
+}
+
+.toast-error > .toast-bold {
+  font-weight: bold;
+  color: #a94442;
+}
+
+.toast-error > .toast-text {
+  color: #a94442;
+}
+
+.toast-error > .toast-action span {
+  color: #a94442;
+}
+
+.toast__bold-font {
+  font-weight: bold;
+}
+
+.form-error {
+  color: $wagerr-red;
+}
+
+.wagerr-red {
+  color: $wagerr-red;
+}
+
+.wagerr-white {
+  color: #fff;
+}
+
+.wagerr-red-bg {
+  background-color: $wagerr-red;
+}
+
+.wagerr-red-bg:hover {
+  background-color: $wagerr-red;
+}
+
+.modal-content {
+  padding: 0;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.modal .modal-header {
+  color: $wagerr-red;
+  padding-top: 20px;
+  text-align: center;
+}
+
+.modal .modal-header,
+.modal .modal-text {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.modal > form > .modal-footer {
+  padding-left: 35px;
+  padding-right: 35px;
+}
+
+.modal-content {
+  color: white;
+  text-align: center;
+}
+
+.input-field > .active {
+  color: $wagerr-red !important;
+}
+
+.input-field .prefix {
+  font-size: 20px !important;
+  margin-top: 10px !important;
+  color: $wagerr-red-dark !important;
+}
+
+.input-field input {
+  color: #fff;
+}
+
+.input-field input:focus {
+  color: #fff;
+}
+
+.input-field .prefix {
+  font-size: 20px;
+  margin-top: 10px;
+  color: $wagerr-red-dark;
+}
+
+.input-field label {
+  color: white;
+  font-size: 1.1em;
+  font-weight: bold;
+}
+
+.input-field input:not([type]):focus:not([readonly]),
+.input-field input[type='text']:not(.browser-default):focus:not([readonly]),
+.input-field input[type='password']:not(.browser-default):focus:not([readonly]),
+.input-field input[type='email']:not(.browser-default):focus:not([readonly]),
+.input-field input[type='url']:not(.browser-default):focus:not([readonly]),
+.input-field input[type='time']:not(.browser-default):focus:not([readonly]),
+.input-field input[type='date']:not(.browser-default):focus:not([readonly]),
+.input-field input[type='datetime']:not(.browser-default):focus:not([readonly]),
+.input-field
+  input[type='datetime-local']:not(.browser-default):focus:not([readonly]),
+.input-field input[type='tel']:not(.browser-default):focus:not([readonly]),
+.input-field input[type='number']:not(.browser-default):focus:not([readonly]),
+.input-field input[type='search']:not(.browser-default):focus:not([readonly]),
+.input-field textarea.materialize-textarea:focus:not([readonly]) {
+  color: white;
+  border-bottom: 1px solid $wagerr-red;
+  -webkit-box-shadow: 0 1px 0 0 $wagerr-red;
+  box-shadow: 0 1px 0 0 $wagerr-red;
+}
+
+.input-field .prefix {
+  font-size: 20px;
+  margin-top: 10px;
+  color: $wagerr-red-dark;
+}
+
+/* Time loader animation */
+@-moz-keyframes timer-loader {
+  0% {
+    -moz-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -moz-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes timer-loader {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes timer-loader {
+  0% {
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+.timer-loader:not(:required) {
+  padding: 0;
+  margin: -10px;
+  transform: scale(0.6);
+  border: 6px solid orangered;
+  -moz-border-radius: 24px;
+  -webkit-border-radius: 24px;
+  border-radius: 24px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  display: inline-block;
+  overflow: hidden;
+  position: relative;
+  text-indent: -9999px;
+  width: 48px;
+  height: 48px;
+}
+
+.timer-loader:not(:required)::before {
+  -moz-animation: timer-loader 1250ms infinite linear;
+  -webkit-animation: timer-loader 1250ms infinite linear;
+  animation: timer-loader 1250ms infinite linear;
+  -moz-transform-origin: 3px 3px;
+  -ms-transform-origin: 3px 3px;
+  -webkit-transform-origin: 3px 3px;
+  transform-origin: 3px 3px;
+  background: orangered;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  content: '';
+  display: block;
+  position: absolute;
+  width: 6px;
+  height: 19.2px;
+  left: 15px;
+  top: 15px;
+}
+
+.timer-loader:not(:required)::after {
+  -moz-animation: timer-loader 15000ms infinite linear;
+  -webkit-animation: timer-loader 15000ms infinite linear;
+  animation: timer-loader 15000ms infinite linear;
+  -moz-transform-origin: 3px 3px;
+  -ms-transform-origin: 3px 3px;
+  -webkit-transform-origin: 3px 3px;
+  transform-origin: 3px 3px;
+  background: orangered;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  content: '';
+  display: block;
+  position: absolute;
+  width: 6px;
+  height: 16px;
+  left: 15px;
+  top: 15px;
+}
+
+/* Transactions List */
+.no-transactions p {
+  font-size: 1.5em;
+}
+
+.no-transactions .fa-list-alt {
+  color: $wagerr-red-dark;
+  font-size: 10em;
+}
+
+.invalid {
+  font-size: 1.1em;
+  color: $wagerr-red-dark;
+}
+
+#sign-verify-message .tabs .indicator {
+  border-bottom: 1px solid $wagerr-red;
+  background-color: transparent;
+  display: none !important;
+}
+
+tbody tr {
+  font-size: 1.1em;
+}
+
+.confirmations {
+  padding: 15px 10px 10px 10px;
+  font-size: 2.1em;
+}
+
+.confirmation-conflicted {
+  color: $wagerr-red;
+}
+
+.confirmation-success {
+  color: green;
+}
+
+.confirmation-pending {
+  color: orangered;
+}
+
+.transaction-list-link {
+  color: $gray-900;
+  cursor: pointer;
+  font-size: 1.5em;
+  padding: 17px;
+}
+
+.transaction-list-link:hover {
+  color: $wagerr-red-dark;
+  cursor: pointer;
+}
